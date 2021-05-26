@@ -7,7 +7,7 @@
 B. Marwick、日本語化：高田祐一・野口淳・Peter Yanase「考古学における研究成果公開の動向－データ管理・方法の透明性・再現性－」（独立行政法人国立文化財機構奈良文化財研究所編『デジタル技術による文化財情報の記録と利活用2』奈良文化財研究所研究報告第24冊､奈良市､2020年）。  
 </p>
 
-## **Supplemental materials for paper: "Component Analysis of Historical Paper Materials at the Matsunoo Taisha Shrine Using Archaeological and Botanical Methodologies"**
+## **Supplemental materials for paper: "Scientific Approach of Historical Paper Materials: Case Studies of Materials at the Yomei Bunko and Miyakonojo Shimazu-ke"*
 
 Contributors: Ayako Shibutani  
 License: [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en)  
