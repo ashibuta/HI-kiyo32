@@ -44,3 +44,25 @@ Same as the table 3
 
 Same as the table 4  
 表4と同じ  
+
+### Fig1　図1  
+
+fig1(1)＝一般文書目録番号400「伊達政宗書状」"Date Masamune Shojo"  
+fig1(2)＝一般文書目録番号416「伊達政宗書状」"Date Masamune Shojo"  
+fig1(3)＝一般文書目録番号418「伊達政宗書状」"Date Masamune Shojo"  
+図1.pdf  Figure 1  
+
+### Fig2　図2  
+
+fig1(1)＝一般文書目録番号3165「近衛稙家消息」"Konoe Taneine Shosoku"  
+fig1(2)＝一般文書目録番号38725「近衛前久消息」"Konoe Sakihisa Shosoku"  
+fig1(3)＝一般文書目録番号2372「近衛信尹消息」"Konoe Nobutada Shosoku"  
+図2.pdf  Figure 2 
+
+### Fig3　図3  
+
+fig3(1)＝「朝鮮国王国書」"Chosen Kokuo Kokusho"  
+fig3(1)-2＝「朝鮮国王国書」"Chosen Kokuo Kokusho"  
+fig3(2)＝「島津義久書状」"Shimadu Yoshihisa Shojo"  
+fig3(2)-2＝「島津義久書状」包 "Shimadu Yoshihisa Shojo" Tsutsumi  
+図3.pdf  Figure 3  
