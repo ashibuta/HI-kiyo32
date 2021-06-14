@@ -1,0 +1,140 @@
+---
+title:  <span style="font-size:12pt">「古文書料紙の科学研究：陽明文庫所蔵史料および都城島津家史料を例として」関連データ</span>
+author: <span style="font-size:10pt">渋谷綾子・高島晶彦・天野真志・野村朋弘・山田太造・畑山周平・小瀬玄士・尾上陽介</span> 
+output: 
+ html_document: default
+ word_document:
+    fig_width: 7
+    fig_height: 5
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+　このファイルは、「古文書料紙の科学研究：陽明文庫所蔵史料および都城島津家史料を例として」の図4・5に使用したRマークダウンのコードである。図4は分析対象の料紙における物理的特徴と構成物量を統計的に解析するため、面密度を可視化した。図5は、現生標本（イネ、アワ、キビ、ヒエ）と松尾大社社蔵史料で確認された料紙のデンプン粒（イネ、トロロアオイ、種不明）について粒径の比較・検討を行い、それぞれの特徴を可視化した。デンプン粒の粒径範囲は標本によって左右されるが、現生標本は註16論文で計測したデータ（任意で20個抽出）にもとづくものである。  
+　なお、本稿で扱ったデータは、陽明文庫、島津家史料のすべてを網羅しているわけではないことを断っておく。  
+<p>
+
+```{r, message=FALSE, comment=""}
+# パッケージの読み込み
+library(ggplot2)
+library(readr)
+library(tidyverse)
+library(knitr)
+library(rmarkdown)
+library(revealjs)
+library(scales)
+library(reshape2)
+library(ggfortify)
+```
+
+# 料紙の物理的特徴と構成物量
+## 陽明文庫所蔵史料の料紙における面密度
+```{r, message=FALSE, comment=""}
+# CSVファイルの読み取り
+density1 <- read_csv("yomei_density.csv",
+                     locale = locale(encoding = "cp932"))　# 日本語表示で読み込む
+
+head(density1)　 # データフレームの上6行を表示
+names(density1)  # density1に含まれるすべての変数名
+dim(density1)　  # density1に含まれる観測数と変数の数を表示させる
+
+n_fun <- function(x){
+return(data.frame(y = max(x)+3.5, label = paste0("n = ",length(x))))
+}
+
+ggplot(density1, aes(x=史料グループ, y=面密度)) +  
+  geom_boxplot(colour="gray",fill="white", alpha=0.4) +　# 箱ひげ図の作成
+  geom_dotplot(binwidth = 0.003, binaxis ="y", stackdir = "center") +  # ドットプロットの作成
+  coord_flip() + #X軸とY軸を転換
+  scale_y_continuous(breaks = c(0,0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45), 
+                     limits = c(0,0.47), expand = c(0,0))+ # 数値軸の目盛りを指定
+  theme_minimal()
+
+ggsave(file = "fig4-1.png", dpi = 300) # ファイルの保存
+
+```
+
+## 都城島津家史料の料紙における面密度
+```{r, message=FALSE, comment=""}
+# CSVファイルの読み取り
+density2 <- read_csv("shimadu-density.csv",
+                     locale = locale(encoding = "cp932"))　# 日本語表示で読み込む
+
+head(density2)　 # データフレームの上6行を表示
+names(density2)  # density2に含まれるすべての変数名
+dim(density2)　  # density2に含まれる観測数と変数の数を表示させる
+
+n_fun <- function(x){
+return(data.frame(y = max(x)+3.5, label = paste0("n = ",length(x))))
+}
+
+ggplot(density2, aes(x=史料名, y=面密度, shape=紙素材)) +  
+  geom_point(size = 2) + # 散布図の作成
+  scale_shape_manual(values = c(1,4)) +
+  coord_flip() + #X軸とY軸を転換
+  scale_y_continuous(breaks = c(0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2), 
+                     limits = c(0,1.25), expand = c(0,0))+ # 数値軸の目盛りを指定
+  theme_minimal()
+
+ggsave(file = "fig4-2.png", dpi = 300) # ファイルの保存
+
+```
+
+# 料紙におけるデンプン粒の特徴
+## 陽明文庫所蔵史料の料紙におけるデンプン粒
+```{r, message=FALSE, comment=""}
+# CSVファイルの読み取り
+starch <- read_csv("yomei-starch.csv")
+
+head(starch)　 # データフレームの上6行を表示
+names(starch)  # starchに含まれるすべての変数名
+dim(starch)　  # starchに含まれる観測数と変数の数を表示させる 
+
+n_fun <- function(x){
+return(data.frame(y = max(x)+2.5, label = paste0("n = ",length(x))))
+}
+
+ggplot(starch, aes(x = デンプン粒の種類, y = 粒径範囲)) +
+  geom_violin(trim=T,fill="#999999",linetype="blank",alpha=I(1/3),adjust=2.5)+ # バイオリンプロット作成
+  stat_summary(geom="pointrange",fun = mean, fun.min = function(x) mean(x)-sd(x), 
+               fun.max = function(x) mean(x)+sd(x), size=.4,alpha=.5)+ # 平均値±標準偏差をプロット
+  stat_summary(fun.data = n_fun, geom = "text",colour="black",size=4)+ # 各グループのデータ数を最大値の位置に追加
+  scale_y_continuous(breaks = c(0,5,10,15,20,25,30), limits = c(0,30), expand = c(0,0))+ # 数値軸の目盛りを指定
+  scale_x_discrete(limit=c("伊達政宗_種不明","伊達政宗_トロロアオイ","近衛前久_トロロアオイ","近衛信尹_トロロアオイ","伊達政宗_イネ","近衛前久_イネ","近衛信尹_イネ","現生イネ","現生アワ","現生キビ","現生ヒエ")) + # 文字軸の順番を指定
+  coord_flip() +　# 90度横向きにする
+  labs(x = "デンプン粒の種類", y = "粒径範囲（μm）") + # ラベルの指定
+  theme_classic()
+ggsave(file = "fig5-1.png", dpi = 300, width=10,height=6) # ファイルの保存
+
+```
+
+## 都城島津家史料の料紙におけるデンプン粒
+```{r, message=FALSE, comment=""}
+# CSVファイルの読み取り
+starch <- read_csv("shimadu-starch.csv")
+
+head(starch)　 # データフレームの上6行を表示
+names(starch)  # starchに含まれるすべての変数名
+dim(starch)　  # starchに含まれる観測数と変数の数を表示させる 
+
+n_fun <- function(x){
+return(data.frame(y = max(x)+2.5, label = paste0("n = ",length(x))))
+}
+
+ggplot(starch, aes(x = デンプン粒の種類, y = 粒径範囲)) +
+  geom_violin(trim=T,fill="#999999",linetype="blank",alpha=I(1/3),adjust=2.5)+ # バイオリンプロット作成
+  stat_summary(geom="pointrange",fun = mean, fun.min = function(x) mean(x)-sd(x), 
+               fun.max = function(x) mean(x)+sd(x), size=.4,alpha=.5)+ # 平均値±標準偏差をプロット
+  stat_summary(fun.data = n_fun, geom = "text",colour="black",size=4)+ # 各グループのデータ数を最大値の位置に追加
+  scale_y_continuous(breaks = c(0,5,10,15,20,25,30), limits = c(0,30), expand = c(0,0))+ # 数値軸の目盛りを指定
+  scale_x_discrete(limit=c("63長井藤栄書状写_種不明","64島津久哲書状_トロロアオイ","162島津道鑒（鑑）下文_トロロアオイ","島津義久書状（包）_トロロアオイ","島津義久書状（包）_イネ","島津義久書状_イネ","現生イネ","現生アワ","現生キビ","現生ヒエ")) + # 文字軸の順番を指定
+  coord_flip() +　# 90度横向きにする
+  labs(x = "デンプン粒の種類", y = "粒径範囲（μm）") + # ラベルの指定
+  theme_classic()
+ggsave(file = "fig5-2.png", dpi = 300, width=10,height=6) # ファイルの保存
+
+```
+
