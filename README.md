@@ -57,7 +57,7 @@ fig1(3)＝一般文書目録番号418「伊達政宗書状」"Date Masamune Shoj
 fig1(1)＝一般文書目録番号3165「近衛稙家消息」"Konoe Taneine Shosoku"  
 fig1(2)＝一般文書目録番号38725「近衛前久消息」"Konoe Sakihisa Shosoku"  
 fig1(3)＝一般文書目録番号2372「近衛信尹消息」"Konoe Nobutada Shosoku"  
-図2.pdf  Figure 2 
+図2.pdf  Figure 2
 
 ### Fig3　図3  
 
@@ -66,3 +66,18 @@ fig3(1)-2＝「朝鮮国王国書」"Chosen Kokuo Kokusho"
 fig3(2)＝「島津義久書状」"Shimadu Yoshihisa Shojo"  
 fig3(2)-2＝「島津義久書状」包 "Shimadu Yoshihisa Shojo" Tsutsumi  
 図3.pdf  Figure 3  
+
+### Fig4_Fig5　図4_図5
+
+shimadu-density.csv＝島津家史料の料紙の面密度のCSVファイル CSV file of density from the Shimaduke Shiryo  
+shimadu-starch.csv＝島津家史料の料紙のCSVファイル CSV file of starch grains into the Shimaduke Shiryo  
+yomei_density.csv＝陽明文庫所蔵史料の料紙の面密度のCSVファイル CSV file of density from the Yomei Bunko  
+yomei-starch.csv＝陽明文庫所蔵史料の料紙のCSVファイル CSV file of starch grains into the Yomei Bunko  
+yomei-miyakonojo-compo_data.html＝Rマークダウンのファイル Rmarkdown file (HTML)  
+yomei-miyakonojo-compo_data.Rmd＝Rマークダウンのファイル Rmarkdown file  
+fig4-1＝作成した図4(1) Used for Figure 4(1)  
+fig4-2＝作成した図4(1) Used for Figure 4(2)  
+fig5-1＝作成した図5(1) Used for Figure 5(1)  
+fig5-2＝作成した図5(2) Used for Figure 5(2)  
+図4.pdf Figure 4  
+図5.pdf Figure 5
