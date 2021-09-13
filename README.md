@@ -64,7 +64,6 @@ fig1(3)＝一般文書目録番号2372「近衛信尹書状」"Konoe Nobutada Sh
 fig3(1)＝「朝鮮国王国書」"Chosen Kokuo Kokusho"  
 fig3(1)-2＝「朝鮮国王国書」"Chosen Kokuo Kokusho"  
 fig3(2)＝「島津義久書状」"Shimadu Yoshihisa Shojo"  
-fig3(2)-2＝「島津義久書状」包 "Shimadu Yoshihisa Shojo" Tsutsumi  
 図3.pdf  Figure 3  
 
 ### Fig4_Fig5　図4_図5
